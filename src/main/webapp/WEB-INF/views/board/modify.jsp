@@ -4,7 +4,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib  prefix="sec" uri="http://www.springframework.org/security/tags"  %>
 
-<jsp:include page="../include/header.jsp"></jsp:include>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- 버튼을 위해서 작성 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+<header class="pt-5">
+
+	<jsp:include page="../include2/topLayout.jsp"></jsp:include>
+</header>
 <style>
 .uploadResult {
    width: 100%;
@@ -213,6 +230,7 @@
    })//document
 </script>
 <!--       ------------------------------------------------------------------------------- -->
+<div class="container">
 <div class="row">
    <div class="col-lg-12">
       <h1 class="page-header">Board Register</h1>
@@ -296,7 +314,7 @@
       </div>
    </div>
 </div>
-
+</div>
 <!-- /.row -->
 
 <!-- /.row -->
