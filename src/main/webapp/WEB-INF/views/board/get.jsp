@@ -3,11 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="sec" uri="http://www.springframework.org/security/tags"  %>
 
+ <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ <!-- bootstrap -->
+ <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+ <!-- 버튼을 위해서 작성 -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- jquery -->
+
+<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  이거 넣어줘야 reply됨
+ 
+ -->
+
 <div class="bigPictureWrapper">
 <div class="bigPicture">
 </div>
 </div>
 <style>
+
+
 .uploadResult {
    width: 100%;
    background-color: #ddd;
@@ -56,14 +73,20 @@
 .bigPicture img {
    width: 400px;
 }
+.bold{
+font-weight: bold 
+}
 </style>
-<jsp:include page="../include/header.jsp"></jsp:include>
-<script src="/resources/js/reply.js"></script>
+ <header class="pt-5">
+
+	<jsp:include page="../include2/topLayout.jsp"></jsp:include>
+</header> 
+ <%-- <jsp:include page="../include/header.jsp"></jsp:include>
+  --%>
+
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
    $(document).ready(function() {
-     
-     
-           
            
       var operForm = $("#operForm");
       $('button[data-oper="modify"]').on("click",function(e) {
@@ -360,6 +383,7 @@
 </script>
 
 <!--       ------------------------------------------------------------------------------- -->
+<div class="container">
 <div class="row">
    <div class="col-lg-12">
       <h1 class="page-header">Board Register</h1>
@@ -370,24 +394,24 @@
 <div class="row">
    <div class="col-lg-12">
       <div class="panel panel-default">
-         <div class="panel-heading"'>게시글 등록</div>
+         <div class="panel-heading">게시글 등록</div>
          <!-- /.panel-heading -->
          <div class="panel-body">
             <div class="form-group">
-               <label>Bno</label><input class='form-control' name='bno'
+               <label class="bold">번호</label><input class='form-control' name='bno'
                   value='<c:out value="${board.bno }"/>' readonly='readonly'>
             </div>
             <div class="form-group">
-               <label>Title</label><input class='form-control' name='title'
+               <label class="bold">제목</label><input class='form-control' name='title'
                   value='<c:out value="${board.title }"/>' readonly='readonly'>
             </div>
             <div class='form-group'>
-               <label>Content</label>
+               <label class="bold">글 내용</label>
                <textarea class='form-control' rows='3' name='content'
                   readonly='readonly'><c:out value="${board.content }" /></textarea>
             </div>
             <div class='form-group'>
-               <label>Writer</label><input class='form-control' name='writer'
+               <label class="bold">작성자</label><input class='form-control' name='writer'
                   value='<c:out value="${board.writer }"/>' readonly='readonly'>
             </div>
       <sec:authentication property="principal" var="pinfo"/>
@@ -413,19 +437,6 @@
          <!-- /.panel-body -->
       </div>
       <!-- /.panel -->
-      <div class='row'>
-         <div class='col-lg-12'>
-            <div class='panel panel-default'>
-               <div class='panel-heading'>File</div>
-               <div class='panel-body'>
-                  <div class='form-group uploadDiv'></div>
-                  <div class='uploadResult'>
-                     <ul></ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
  
  
       <!-- /.panel-heading reply 영역시작 -->
@@ -454,8 +465,8 @@
       </div>
       <!-- reply 영역 -->
       <!-- 모달영역 -->
-      <div class='modal fade' id='myModal' tabindex='-1' role='dialog'
-         aria-labelledby='myModallabel' aria-hidden='true'>
+      <div class='modal' id='myModal' tabindex='-1' role='dialog'
+         aria-labelledby='myModallabel' aria-hidden='true' role="document">
          <div class='modal-dialog'>
             <div class='modal-content'>
                <div class='modal-header'>
@@ -491,6 +502,7 @@
       <!-- 모달영역 -->
    </div>
    <!-- /.col-lg-12 -->
+</div>
 </div>
 <!-- /.row -->
 

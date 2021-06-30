@@ -1,57 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib  prefix="sec" uri="http://www.springframework.org/security/tags"  %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
-<jsp:include page="../include/header.jsp"></jsp:include>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!-- 버튼을 위해서 작성 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
 <style>
 .uploadResult {
-   width: 100%;
-   background-color: #ddd;
+	width: 100%;
+	background-color: #ddd;
 }
 
 .uploadResult ul {
-   display: flex;
-   flex-flow: row;
-   justify-content: center;
-   align-items: center;
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	align-items: center;
 }
 
 .uploadResult ul li {
-   list-style: none;
-   padding: 5px;
+	list-style: none;
+	padding: 5px;
 }
 
 .uploadResult ul li img {
-   width: 20px;
+	width: 20px;
 }
 
 .uploadResult ul li span {
-   color: white;
+	color: white;
 }
 
 .bigPictureWrapper {
-   position: absolute;
-   display: none;
-   justify-content: center;
-   align-items: center;
-   top: 0%;
-   height: 100%;
-   width: 100%;
-   background-color: gray;
-   z-index: 100;
-   background: rgba(255, 255, 255, 0.5);
+	position: absolute;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	top: 0%;
+	height: 100%;
+	width: 100%;
+	background-color: gray;
+	z-index: 100;
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .bigPicture {
-   position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .bigPicture img {
-   width: 400px;
+	width: 400px;
 }
 </style>
 <script>
@@ -174,61 +185,71 @@
       
    })
 </script>
-<!--       ------------------------------------------------------------------------------- -->
-<div class="row">
-   <div class="col-lg-12">
-      <h1 class="page-header">Board Register</h1>
-   </div>
-   <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-   <div class="col-lg-12">
-      <div class="panel panel-default">
-         <div class="panel-heading">게시글 등록</div>
-         <!-- /.panel-heading -->
-         <div class="panel-body">
-            <form role="form" action="/board/register" method="post">
-               <div class="form-group">
-                  <label>Title</label><input class='form-control' name='title'>
-               </div>
-               <div class='form-group'>
-                  <label>Content</label><textarea class='form-control' rows='3' name='content'></textarea>
-               </div>
-               <div class='form-group'>
-                  <label>Writer</label><input class='form-control' name='writer'
-                   value='<sec:authentication
-                   property="principal.username"/>' readonly="readonly">
-               </div>
-               <button type='submit' class='btn btn-default'>Submit</button>
-               <button type='reset' class='btn btn-default'>Reset</button>               
-            
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }"/>
-            </form>
-            <!-- /.table-responsive -->
-         </div>
-         <!-- /.panel-body -->
-      </div>
-      <!-- /.panel -->
-   </div>
-   <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class='row'>
-   <div class='col-lg-12'>
-      <div class='panel panel-default'>
-         <div class='panel-heading'>File Attach</div>
-         <div class='panel-body'>
-            <div class='form-group uploadDiv'>
-               <input type='file' name='uploadFile' multiple>
-            </div>
-            <div class='uploadResult'>
-               <ul></ul>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 
+<header class="pt-5">
+
+	<jsp:include page="../include2/topLayout.jsp"></jsp:include>
+</header>
+
+<!--       ------------------------------------------------------------------------------- -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Board Register</h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">게시글 등록</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<form role="form" action="/board/register" method="post">
+						<div class="form-group">
+							<label>Title</label><input class='form-control' name='title'>
+						</div>
+						<div class='form-group'>
+							<label>Content</label>
+							<textarea class='form-control' rows='3' name='content'></textarea>
+						</div>
+						<div class='form-group'>
+							<label>Writer</label><input class='form-control' name='writer'
+								value='<sec:authentication
+                   property="principal.username"/>'
+								readonly="readonly">
+						</div>
+						<button type='submit' class='btn btn-default'>Submit</button>
+						<button type='reset' class='btn btn-default'>Reset</button>
+
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token }" />
+					</form>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class='row'>
+		<div class='col-lg-12'>
+			<div class='panel panel-default'>
+				<div class='panel-heading'>File Attach</div>
+				<div class='panel-body'>
+					<div class='form-group uploadDiv'>
+						<input type='file' name='uploadFile' multiple>
+					</div>
+					<div class='uploadResult'>
+						<ul></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!--    footer 시작      -------------------------------------------------------------- -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
